@@ -99,14 +99,20 @@ while True:
         print("Select Which Task You Want to Complete\n\n")
         completes = []
         number = 1
+        isUncomplete = False
         for task in a.tasks:
             if task.task_done == False:
+                isUncomplete = True
                 print(f"Task No = {number}")
                 number = number + 1
                 print(task)
                 completes.append(task.id)
                 print("\n")
-        elect = int(input("Enter Task Number : "))
-        a.completeTask(completes[elect-1])
-    elif option == 7:
+
+        if isUncomplete:
+            elect = int(input("Enter Task Number : "))
+            a.completeTask(completes[elect-1])
+        else:
+            print("\nThere are no Task to Complete\n")
+    else:
         break
